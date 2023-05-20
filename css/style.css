@@ -85,7 +85,7 @@ button {
     margin-top: 10px;
     transition-duration: 0.4s;
     flex-grow: 1;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 button:hover {
@@ -132,6 +132,10 @@ button:hover {
 .toggle.active {
     background-color: var(--primary-color);
     color: var(--secondary-color);
+}
+
+.calculator-buttons button {
+    margin: 5px;
 }
 
 /* Адаптивные стили */
