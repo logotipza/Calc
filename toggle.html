@@ -3,68 +3,69 @@
 <head>
     <title>Toggle Example</title>
     <style>
+        .toggle-container {
+            display: flex;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: black;
+        }
+
         .toggle {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
+            flex: 1;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
+            transition: background-color 0.3s;
+            position: relative;
+            z-index: 1;
+            border: 2px solid black;
+            border-radius: 10px;
+            color: white;
         }
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
+        .toggle:first-child {
+            border-right: none;
+        }
+
+        .toggle:last-child {
+            border-left: none;
+        }
+
+        .toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .toggle.active {
             background-color: white;
-            transition: .4s;
+            color: black;
         }
 
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
+        .toggle.active:hover {
+            background-color: rgba(255, 255, 255, 0.9);
         }
     </style>
 </head>
 <body>
-    <h2>Toggle Example</h2>
+    <div class="toggle-container">
+        <div class="toggle active" onclick="toggleActive(this)">Прямоугольник 1</div>
+        <div class="toggle" onclick="toggleActive(this)">Прямоугольник 2</div>
+    </div>
 
-    <label class="toggle">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
+    <script>
+        let toggles = document.querySelectorAll('.toggle');
+
+        function toggleActive(selectedToggle) {
+            toggles.forEach(toggle => {
+                if (toggle === selectedToggle) {
+                    toggle.classList.add('active');
+                } else {
+                    toggle.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
