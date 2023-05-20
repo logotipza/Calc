@@ -1,3 +1,4 @@
+/* Общие стили */
 :root {
     --primary-color: #000;
     --secondary-color: #fff;
@@ -83,6 +84,8 @@ button {
     font-size: 16px;
     margin-top: 10px;
     transition-duration: 0.4s;
+    flex-grow: 1;
+    margin: 5px;
 }
 
 button:hover {
@@ -131,6 +134,7 @@ button:hover {
     color: var(--secondary-color);
 }
 
+/* Адаптивные стили */
 @media only screen and (max-width: 768px) {
     .container {
         padding: 10px;
@@ -139,5 +143,17 @@ button:hover {
     input[type="number"],
     select {
         font-size: 16px;
+    }
+
+    .calculator-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calculator-buttons button {
+        margin: 5px;
+        flex-grow: 1;
     }
 }
