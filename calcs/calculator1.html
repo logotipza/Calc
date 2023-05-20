@@ -34,9 +34,9 @@
             
             <button type="submit">Рассчитать</button>
         </form>
-        <p>Ежемесячный платеж: <span id="monthlyPayment"></span></p>
-        <p>Общая сумма кредита: <span id="totalLoanAmount"></span></p>
-        <p>Размер переплаты: <span id="totalOverpayment"></span></p>
+        <p>Ежемесячный платеж: <span id="monthlyPayment" class="number-format"></span></p>
+        <p>Общая сумма кредита: <span id="totalLoanAmount" class="number-format"></span></p>
+        <p>Размер переплаты: <span id="totalOverpayment" class="number-format"></span></p>
         <div class="table-container">
             <table class="table" id="loanTable">
                 <thead>
@@ -52,6 +52,6 @@
         </div>
     </div>    
     <script src="../js/loanCalculator.js"></script>
-    <!-- <script src="toggle.js"></script> -->
+    <script src="../js/numbers.js"></script>
 </body>
 </html>
