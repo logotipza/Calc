@@ -6,7 +6,7 @@ function calculateInterest() {
     var investmentTerm = parseInt(document.getElementById("investmentTerm").value);
 
     var totalAmount = initialAmount * Math.pow(1 + interestRate, investmentTerm);
-    document.getElementById("totalAmount").innerText = totalAmount.toFixed(2) + ' руб.';
+    document.getElementById("totalAmount").innerText = formatMoney(totalAmount);
 
     var interestTable = document.getElementById("interestTable");
     var tableBody = interestTable.querySelector("tbody");
@@ -23,7 +23,7 @@ function calculateInterest() {
         var amountCell = newRow.insertCell();
 
         yearCell.innerText = year;
-        amountCell.innerText = (initialAmount * Math.pow(1 + interestRate, year)).toFixed(2) + ' руб.';
+        amountCell.innerText = formatMoney(initialAmount * Math.pow(1 + interestRate, year));
     }
 
     // Удаление предыдущего графика, если он существует
