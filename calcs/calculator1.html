@@ -37,6 +37,7 @@
         <p>Ежемесячный платеж: <span id="monthlyPayment" class="number-format"></span></p>
         <p>Общая сумма кредита: <span id="totalLoanAmount" class="number-format"></span></p>
         <p>Размер переплаты: <span id="totalOverpayment" class="number-format"></span></p>
+        <canvas id="chart"></canvas>
         <div class="table-container">
             <table class="table" id="loanTable">
                 <thead>
@@ -50,8 +51,11 @@
                 <tbody></tbody>
             </table>
         </div>
+        <!-- <canvas id="loanChart"></canvas> -->
+        
     </div>    
     <script src="../js/loanCalculator.js"></script>
     <script src="../js/numbers.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
