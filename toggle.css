@@ -1,0 +1,43 @@
+.toggle-group {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.toggle-group input[type="radio"] {
+    display: none;
+}
+
+.toggle-group .toggle {
+    flex: 0 0 50%;
+    background-color: var(--secondary-color);
+    height: 100%;
+    transition: transform 0.3s;
+    border-radius: var(--border-radius);
+}
+
+.toggle-group .toggle-label {
+    flex: 1;
+    padding: 10px;
+    color: var(--secondary-color);
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-group .toggle-label:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.toggle-group input[type="radio"]:checked + .toggle-label {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.toggle-group input[type="radio"]:checked ~ .toggle {
+    transform: translateX(100%);
+}
