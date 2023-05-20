@@ -24,19 +24,14 @@
             </div>
             <div class="form-group">
                 <label>Тип срока кредита</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" id="loanPeriodMonths" name="loanPeriodType" value="months" checked>
-                        <span class="radio-custom"></span>
-                        <span class="radio-text">В месяцах</span>
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" id="loanPeriodYears" name="loanPeriodType" value="years">
-                        <span class="radio-custom"></span>
-                        <span class="radio-text">В годах</span>
-                    </label>
+                <div class="toggle-container">
+                    <div class="toggle active" onclick="togglePeriodType('months')">В месяцах</div>
+                    <div class="toggle" onclick="togglePeriodType('years')">В годах</div>
                 </div>
+                <input type="radio" id="loanPeriodMonths" name="loanPeriodType" value="months" checked style="display: none;">
+                <input type="radio" id="loanPeriodYears" name="loanPeriodType" value="years" style="display: none;">
             </div>
+            
             <button type="submit">Рассчитать</button>
         </form>
         <p>Ежемесячный платеж: <span id="monthlyPayment"></span></p>
@@ -57,5 +52,6 @@
         </div>
     </div>    
     <script src="loanCalculator.js"></script>
+    <!-- <script src="toggle.js"></script> -->
 </body>
 </html>

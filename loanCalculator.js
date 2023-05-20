@@ -1,15 +1,17 @@
-function toggleLoanPeriod(loanPeriodType) {
+function togglePeriodType(type) {
     var radioMonths = document.getElementById("loanPeriodMonths");
     var radioYears = document.getElementById("loanPeriodYears");
-    var toggle = document.querySelector(".toggle");
-    if (loanPeriodType === "months") {
+    var toggleContainer = document.querySelector(".toggle-container");
+    if (type === "months") {
         radioMonths.checked = true;
         radioYears.checked = false;
-        toggle.style.transform = "translateX(0)";
-    } else if (loanPeriodType === "years") {
+        toggleContainer.children[0].classList.add("active");
+        toggleContainer.children[1].classList.remove("active");
+    } else if (type === "years") {
         radioMonths.checked = false;
         radioYears.checked = true;
-        toggle.style.transform = "translateX(100%)";
+        toggleContainer.children[0].classList.remove("active");
+        toggleContainer.children[1].classList.add("active");
     }
 }
 
