@@ -19,18 +19,19 @@
                 <input type="number" id="interestRate" required>
             </div>
             <div class="form-group">
-                <label for="investmentTerm">Срок вложения, месяцев</label>
+                <label for="investmentTerm">Срок вложения, лет</label>
                 <input type="number" id="investmentTerm" required>
             </div>
             <button type="submit">Рассчитать</button>
         </form>
         <h2>Результаты расчета</h2>
         <p>Общая сумма накоплений: <span id="totalAmount"></span></p>
+        <canvas id="chart"></canvas>
         <div class="table-container">
             <table class="table" id="interestTable">
                 <thead>
                     <tr>
-                        <th>Месяц</th>
+                        <th>Год</th>
                         <th>Накопления</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
             </table>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/interestCalculator.js"></script>
 </body>
 </html>
