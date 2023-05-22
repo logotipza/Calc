@@ -39,7 +39,8 @@ let productData = [
             <td>${amount} г</td>
             <td>${calories.toFixed(2)}</td>
             <td>
-              <button class="deleteButton" onclick="deleteProduct(this)">Удалить</button>
+              <button class="deleteButton" onclick="deleteProduct(this)">X</button>
+              <button class="deleteButton" onclick="deleteProduct(this)">Изменить</button>
             </td>
           </tr>
         `;
