@@ -1,0 +1,8 @@
+<products>
+  <product name="Яблоко" calories="52" />
+  <product name="Груша" calories="57" />
+  <product name="Банан" calories="96" />
+  <product name="Апельсин" calories="43" />
+  <product name="Киви" calories="61" />
+  <!-- Добавьте другие продукты с их калорийностью -->
+</products>

@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Калькулятор валют</title>
+    <title>Калькулятор процентов</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <button onclick="window.location.href='../index.html'">Вернуться</button>
-        <h1>Калькулятор валют</h1>
-        <p>Этот калькулятор поможет перевести одни валюты в другие. Сейчас уже 20 штук.</p>
-        <form onsubmit="convertCurrency(event); return false;">
-            <div>
-                <label for="fromCurrency">Из валюты:</label>
-                <select id="fromCurrency" required>
-                    ${currencyOptions}
-                </select>
+        <button onclick="history.back()">Вернуться</button>
+        <h1>Калькулятор процентов</h1>
+        <p>Этот калькулятор поможет вам рассчитать накопления с учетом процентной ставки. Введите начальную сумму, процентную ставку и срок вложения, а затем нажмите кнопку "Рассчитать".</p>
+        <form onsubmit="event.preventDefault(); calculateInterest();">
+            <div class="form-group">
+                <label for="initialAmount">Начальная сумма, руб.</label>
+                <input type="number" id="initialAmount" required>
             </div>
-            <div>
-                <label for="toCurrency">В валюту:</label>
-                <select id="toCurrency" required>
-                    ${currencyOptions}
-                </select>
+            <div class="form-group">
+                <label for="interestRate">Процентная ставка, %</label>
+                <input type="number" id="interestRate" required>
             </div>
-            <div>
-                <label for="amount">Сумма:</label>
-                <input type="number" id="amount" required>
+            <div class="form-group">
+                <label for="investmentTerm">Срок вложения, лет</label>
+                <input type="number" id="investmentTerm" required>
             </div>
-            <button type="submit">Конвертировать</button>
+            <button type="submit">Рассчитать</button>
         </form>
-        <div id="result" style="text-align: center; font-size: 50px; margin: 20px;"></div>
+        <h2>Результаты расчета</h2>
+        <p>Общая сумма накоплений: <span id="totalAmount"></span></p>
+        <canvas id="chart"></canvas>
+        <div class="table-container">
+            <table class="table" id="interestTable">
+                <thead>
+                    <tr>
+                        <th>Год</th>
+                        <th>Накопления</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
-
-    <script src="../js/currencyCalculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/numbers.js"></script>
+    <script src="../js/interestCalculator.js"></script>
 </body>
 </html>

@@ -134,9 +134,9 @@ button:hover {
     color: var(--secondary-color);
 }
 
-.calculator-buttons button {
+/* .calculator-buttons button {
     margin: 5px;
-}
+} */
 
 /* Адаптивные стили */
 @media only screen and (max-width: 768px) {
