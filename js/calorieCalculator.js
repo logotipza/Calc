@@ -40,7 +40,7 @@ let productData = [
             <td>${calories.toFixed(2)}</td>
             <td>
               <button class="deleteButton" onclick="deleteProduct(this)">X</button>
-              <button class="deleteButton" onclick="deleteProduct(this)">Изменить</button>
+              <button class="deleteButton" onclick="changeProduct(this)">Изменить</button>
             </td>
           </tr>
         `;
@@ -62,6 +62,31 @@ let productData = [
   
     updateTotalCalories();
   }
+
+     // Функция для изменения продукта в таблице
+     function changeProduct(button) {
+      const row = button.closest("tr");
+      const amountCell = row.querySelector("td:nth-child(2)");
+      const amount = parseFloat(amountCell.textContent.split(" ")[0]);
+    
+      const newAmount = prompt("Введите новую граммовку:");
+      if (newAmount && !isNaN(newAmount) && parseFloat(newAmount) > 0) {
+        const productCell = row.querySelector("td:nth-child(1)");
+        const productName = productCell.textContent;
+        const product = productData.find((item) => item.name === productName);
+    
+        if (product) {
+          const calories = product.calories * parseFloat(newAmount);
+          const caloriesCell = row.querySelector("td:nth-child(3)");
+          caloriesCell.textContent = calories.toFixed(2);
+    
+          amountCell.textContent = `${newAmount} г`;
+    
+          updateTotalCalories();
+        }
+      }
+    }
+
   
   // Функция для обновления общей калорийности блюда
   function updateTotalCalories() {
