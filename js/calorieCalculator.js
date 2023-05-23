@@ -83,29 +83,66 @@ function deleteProduct(button) {
 
   updateTotalCalories();
 }
-
 // Функция для изменения продукта в таблице
 function changeProduct(button) {
   const row = button.closest("tr");
-  const amountCell = row.cells[1];
-  const amount = parseFloat(amountCell.textContent.split(" ")[0]);
+  const amountCell = row.querySelector("td:nth-child(2)");
+  const currentAmount = parseFloat(amountCell.textContent.split(" ")[0]);
 
-  const newAmount = prompt("Введите новую граммовку:");
-  if (newAmount && !isNaN(newAmount) && parseFloat(newAmount) > 0) {
-    const productCell = row.cells[0];
-    const productName = productCell.textContent;
-    const product = productData.find((item) => item.name === productName);
+  const formContainer = document.createElement("div");
+  formContainer.classList.add("custom-form-container");
 
-    if (product) {
-      const calories = product.calories * parseFloat(newAmount);
-      const caloriesCell = row.cells[2];
-      caloriesCell.textContent = calories.toFixed(2);
+  const inputField = document.createElement("input");
+  inputField.type = "number";
+  inputField.placeholder = "Новая граммовка";
+  inputField.classList.add("custom-input-field");
 
-      amountCell.textContent = `${newAmount} г`;
+  const confirmButton = document.createElement("button");
+  confirmButton.textContent = "Применить";
+  confirmButton.classList.add("custom-confirm-button");
 
-      updateTotalCalories();
+  formContainer.appendChild(inputField);
+  formContainer.appendChild(confirmButton);
+
+  const updateAmount = () => {
+    const newAmount = parseFloat(inputField.value);
+    if (!isNaN(newAmount) && newAmount > 0) {
+      const productCell = row.querySelector("td:nth-child(1)");
+      const productName = productCell.textContent;
+      const product = productData.find((item) => item.name === productName);
+
+      if (product) {
+        const calories = product.calories * newAmount;
+        const caloriesCell = row.querySelector("td:nth-child(3)");
+        caloriesCell.textContent = calories.toFixed(2);
+
+        amountCell.textContent = `${newAmount} г`;
+
+        updateTotalCalories();
+      }
     }
-  }
+    formContainer.remove();
+  };
+
+  confirmButton.addEventListener("click", updateAmount);
+  inputField.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      updateAmount();
+    }
+  });
+
+  inputField.value = currentAmount;
+  const cellContent = amountCell.firstChild;
+  amountCell.replaceChild(formContainer, cellContent);
+  inputField.focus();
+
+  // Добавляем обработчик события потери фокуса с полем ввода
+  inputField.addEventListener("blur", () => {
+    // Если поле ввода пустое, восстанавливаем предыдущее значение
+    if (inputField.value.trim() === "") {
+      inputField.value = currentAmount;
+    }
+  });
 }
 
 // Функция для обновления общей калорийности блюда
